@@ -1,10 +1,21 @@
 /* Ionic Variables and Theming. For more info, please see:
 http://ionicframework.com/docs/theming/ */
+@font-face {
+  font-family: 'Nunito';
+  src: url('../assets/nunito-font/Nunito-Regular.woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  font-family: 'Nunito' !important;
+}
+
 
 /** Ionic CSS Variables **/
 :root {
   /** primary **/
-  --ion-color-primary: #3880ff;
+  --ion-color-primary: #D71921;
   --ion-color-primary-rgb: 56, 128, 255;
   --ion-color-primary-contrast: #ffffff;
   --ion-color-primary-contrast-rgb: 255, 255, 255;
@@ -60,7 +71,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-dark-tint: #383a3e;
 
   /** medium **/
-  --ion-color-medium: #92949c;
+  --ion-color-medium: #6C757D;
   --ion-color-medium-rgb: 146, 148, 156;
   --ion-color-medium-contrast: #ffffff;
   --ion-color-medium-contrast-rgb: 255, 255, 255;
@@ -74,9 +85,44 @@ http://ionicframework.com/docs/theming/ */
   --ion-color-light-contrast-rgb: 0, 0, 0;
   --ion-color-light-shade: #d7d8da;
   --ion-color-light-tint: #f5f6f9;
+
+  /** border **/
+  --ion-border-radious-sm: 8px !important;
+  --ion-border-radious-md: 16px !important;
+  --ion-border-radious-lg: 24px !important;
+
+  /** margin top **/
+  --ion-margin-top-none: 0px !important;
+  --ion-margin-top-sm: 8px !important;
+  --ion-margin-top-md: 16px !important;
+  --ion-margin-top-lg: 24px !important;
+  --ion-margin-top-xl: 32px !important;
+
+  /** margin bottom **/
+  --ion-margin-bottom-none: 0px !important;
+  --ion-margin-bottom-sm: 8px !important;
+  --ion-margin-bottom-md: 16px !important;
+  --ion-margin-bottom-lg: 24px !important;
+
+  /** padding top **/
+  --ion-padding-top-none: 0px !important;
+  --ion-padding-top-sm: 8px !important;
+  --ion-padding-top-md: 16px !important;
+  --ion-padding-top-lg: 24px !important;
+  --ion-padding-top-xl: 32px !important;
+
+  /** padding vertical **/
+  --ion-padding-vertical-none: 0px !important;
+  --ion-padding-vertical-sm: 8px 0px!important;
+  --ion-padding-vertical-md: 16px 0px!important;
+  --ion-padding-vertical-lg: 24px 0px !important;
+
+  /* opacity */
+  --placeholder-opacity: 0.2 !important;
+  --ion-placeholder-color: red;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   /*
    * Dark Colors
    * -------------------------------------------
