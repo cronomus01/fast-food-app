@@ -3,7 +3,7 @@
         <ion-list class="ion-no-padding">
           <ion-item lines="none">
             <ion-label position="stacked" color="medium">Email Address</ion-label>
-            <ion-input class="ion-email" placeholder="Enter your email"></ion-input>
+            <ion-input class="ion-email" placeholder="Enter your email" aria-label="email-address"></ion-input>
           </ion-item>
         </ion-list>
         <ion-list class="ion-no-padding ion-margin-top ion-margin-bottom">
@@ -11,7 +11,7 @@
             <ion-label position="stacked" color="medium">Password</ion-label>
             <ion-grid class="ion-no-margin">
               <ion-row>
-                <ion-col><ion-input type="password" placeholder="Enter your password"></ion-input></ion-col>
+                <ion-col><ion-input type="password" placeholder="Enter your password" aria-label="password-field"></ion-input></ion-col>
                 <ion-col size="auto">
                   <router-link to="/forgot-password" class="ion-forgot-link">
                     Forgot?
@@ -36,6 +36,9 @@
 import { IonButton, IonLabel, IonItem, IonInput, IonList, IonGrid, IonCol, IonRow, IonButtons} from '@ionic/vue';
 </script>
 <style scoped>
+ion-list {
+  border-radius: var(--ion-border-radious-md);
+}
 ion-item {
   border: 1px solid var(--ion-color-medium);
   border-radius: var(--ion-border-radious-md);

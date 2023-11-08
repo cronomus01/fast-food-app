@@ -1,5 +1,5 @@
 <template>
-  <ion-item lines="none" class="">
+  <ion-item lines="none">
     <div>
       <p>Don't have an account yet?</p>
       <router-link to="/create-account" class="ion-create-link">
@@ -16,6 +16,9 @@
 <style scoped>
 ion-item {
   --inner-padding-end: 0;
+  background-color: transparent;
+  --padding-start: 0px;
+  --background: transparent;
 }
 
 ion-item div {

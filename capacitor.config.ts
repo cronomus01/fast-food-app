@@ -2,7 +2,7 @@ import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   appId: 'com.fastfood.exam',
-  appName: 'fast-food-exam',
+  appName: 'Fast Food Exam',
   webDir: 'dist',
   server: {
     androidScheme: 'https'
