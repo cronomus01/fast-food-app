@@ -66,8 +66,8 @@ ion-buttons {
 ion-button {
   flex-basis: 100%;
   width: 100%;
-  --padding-top: 1.25em;
-  --padding-bottom: 1.25em;
+  --padding-top: 2em !important;
+  --padding-bottom: 2em !important;
   --border-radius: 1.25em !important;
   font-weight: bold;
 }
