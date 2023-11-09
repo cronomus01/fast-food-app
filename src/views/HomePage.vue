@@ -8,7 +8,8 @@
 
 <script setup lang="ts">
 import { IonPage, IonButton } from '@ionic/vue';
-import {MenuBar, AppHeader, AppContent} from '@/utils/home';
+import { AppHeader, AppContent} from '@/utils/home';
+import MenuBar from '@/components/menu/MenuBar.vue';
 </script>
 
 <style scoped>

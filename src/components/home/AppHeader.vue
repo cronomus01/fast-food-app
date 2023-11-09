@@ -7,13 +7,7 @@
           </ion-menu-button>
         </ion-buttons>
      
-        <ion-grid>
-          <ion-row>
-            <ion-col size="auto" class="ion-no-padding"><ion-img src="assets/crown.png" class="crown"></ion-img></ion-col>
-            <ion-col size="auto" class="ion-text-center"><p class="ion-no-margin">{{ points }} points</p></ion-col>
-            <ion-col size="auto" class="ion-no-padding "><ion-img src="assets/octicon_chevron-left-16.png" class="chevron-left"></ion-img></ion-col>
-          </ion-row>
-        </ion-grid>
+        <app-header-points></app-header-points>
 
         <ion-buttons slot="end">
           <ion-button class="ion-no-padding ion-no-margin">
@@ -27,6 +21,7 @@
 <script setup lang="ts">
 import { IonHeader, IonTitle, IonToolbar, IonButtons, IonMenuButton, IonImg, IonItem, IonGrid, IonCol, IonRow, IonIcon, IonButton, IonText } from '@ionic/vue';
 import { ref } from 'vue';
+import AppHeaderPoints from './AppHeaderPoints.vue';
 
 const points = ref(0);
 
@@ -42,35 +37,13 @@ ion-toolbar {
   --background: var(--ion-color-dark-contrast);
 }
 
-ion-img {
-  width: 30px;
-}
-
 ion-img.profile {
   padding: 0px;
   width: 40px;
 }
 
-ion-img.crown {
-  width: 35px;
-  padding-right: 0.5em;
-}
-
-ion-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1.2em !important;
-}
-
-ion-img.chevron-left {
-  width: 20px;
-}
-
-ion-col {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+ion-img {
+  width: 30px;
 }
 
 ion-button {
@@ -78,8 +51,6 @@ ion-button {
   --padding-start: 0px;
 }
 
-p {
-  font-weight: bold;
-}
+
 
 </style>
