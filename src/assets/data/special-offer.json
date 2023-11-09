@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "productId": 1,
+    "name": "Fresh Food",
+    "image": "assets/special-offers/fresh-food.png"
+  },
+  {
+    "id": 2,
+    "productId": 2,
+    "name": "All u can eat",
+    "image": "assets/special-offers/all-u-can-eat.png"
+  },
+  {
+    "id": 2,
+    "productId": 2,
+    "name": "All u can eat",
+    "image": "assets/special-offers/all-u-can-eat.png"
+  }
+]

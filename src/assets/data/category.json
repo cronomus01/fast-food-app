@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "productId": 1,
+    "name": "Fast food",
+    "image": "assets/category/fastfood.png"
+  },
+  {
+    "id": 2,
+    "productId": 2,
+    "name": "Desserts",
+    "image": "assets/category/desserts.png"
+  }
+]

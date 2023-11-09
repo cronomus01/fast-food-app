@@ -1,5 +1,5 @@
 <template>
-      <form action="/login" class="ion-form">
+      <form action="/home" class="ion-form">
         <ion-list class="ion-no-padding">
           <ion-item lines="none">
             <ion-label position="stacked" color="medium">Email Address</ion-label>
@@ -22,7 +22,7 @@
           </ion-item>
         </ion-list>
         <ion-buttons>
-          <ion-button fill="solid" expand="block" color="primary" class="ion-login-btn">
+          <ion-button fill="solid" expand="block" color="primary" class="ion-login-btn" router-link="/home">
             Login
           </ion-button>
           <ion-button fill="clear" expand="block" color="primary">
@@ -37,11 +37,11 @@ import { IonButton, IonLabel, IonItem, IonInput, IonList, IonGrid, IonCol, IonRo
 </script>
 <style scoped>
 ion-list {
-  border-radius: var(--ion-border-radious-md);
+  border-radius: var(--ion-border-radius-md);
 }
 ion-item {
   border: 1px solid var(--ion-color-medium);
-  border-radius: var(--ion-border-radious-md);
+  border-radius: var(--ion-border-radius-md);
 }
 
 ion-grid {
