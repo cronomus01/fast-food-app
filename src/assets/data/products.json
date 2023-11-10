@@ -1,0 +1,42 @@
+[
+  {
+    "id": 1,
+    "productId": 1,
+    "name": "Chicken Salad",
+    "category": "Chicken",
+    "image": "assets/most-popular/chicken-salad.png",
+    "details": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam eu aliquam ipsum, sed accumsan metus. Maecenas neque nunc, tincidunt nec dui ac, rutrum consectetur ligula.", 
+    "rating": 2,
+    "price": 172
+  },
+  {
+    "id": 2,
+    "productId": 2,
+    "name": "Sorvetes Primavera",
+    "category": "Dessert",
+    "image": "assets/most-popular/dessert.png",
+    "details": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam eu aliquam ipsum, sed accumsan metus. Maecenas neque nunc, tincidunt nec dui ac, rutrum consectetur ligula.", 
+    "rating": 4.5,
+    "price": 185
+  },
+  {
+    "id": 3,
+    "productId": 3,
+    "name": "Fried Chicken",
+    "category": "Chicken",
+    "image": "assets/most-popular/fried-chicken.png",
+    "details": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam eu aliquam ipsum, sed accumsan metus. Maecenas neque nunc, tincidunt nec dui ac, rutrum consectetur ligula.", 
+    "rating": 4,
+    "price": 175
+  },
+  {
+    "id": 4,
+    "productId": 4,
+    "name": "Steak Frieds veggies",
+    "image": "assets/most-popular/steak-frieds-veggies.png",
+    "details": "Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nam eu aliquam ipsum, sed accumsan metus. Maecenas neque nunc, tincidunt nec dui ac, rutrum consectetur ligula.", 
+    "category": "Meat",
+    "rating": 2.5,
+    "price": 175
+  }
+]

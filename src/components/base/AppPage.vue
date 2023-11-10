@@ -1,21 +1,21 @@
 <template>
-  <ion-page id="main-content">
-    <ion-header class="ion-no-border">
-      <slot name="header"></slot>
-    </ion-header>
-    <!-- <menu-header></menu-header> -->
-    <ion-content class="ion-padding">
-      <slot name="content"></slot>
-    </ion-content>
+  <ion-page>
+    <ion-page id="main-content">
+      <ion-header class="ion-no-border">
+        <slot name="header"></slot>
+      </ion-header>
+      <!-- <menu-header></menu-header> -->
+      <ion-content class="ion-padding">
+        <slot name="content"></slot>
+      </ion-content>
+    </ion-page>
   </ion-page>
 </template>
 
 
 <script setup lang="ts">
-  import { IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonMenu, IonMenuToggle, IonButtons, IonMenuButton, IonImg  } from '@ionic/vue';
-  import { headerStore } from '@/stores/header';
-  import MenuHeader from '../menu/MenuHeader.vue';
-  const header = headerStore();
+  import { IonPage, IonHeader, IonContent } from '@ionic/vue';
+  import MenuBar from '../menu/MenuBar.vue';
 </script>
 
 <style>
@@ -23,7 +23,7 @@
 ion-content {
     --padding-start: 8px;
     --padding-end: 8px;
-    --padding-top: 8px;
+    --padding-top: 0 !important;
     --padding-bottom: 8px;
 }
 

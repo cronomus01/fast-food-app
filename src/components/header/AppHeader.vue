@@ -1,9 +1,7 @@
 <template>
     <ion-toolbar>
       <ion-buttons slot="start">
-        <ion-menu-button>
-          <ion-img src="assets/menu.png" alt="menu-button"></ion-img>
-        </ion-menu-button>
+        <slot name="button"></slot>
       </ion-buttons>
     
       <slot name="our-foods"></slot>
@@ -14,7 +12,7 @@
 </template>
 
 <script setup lang="ts">
-import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonImg } from '@ionic/vue';
+import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonImg, IonBackButton } from '@ionic/vue';
 </script>
 
 <style scoped>

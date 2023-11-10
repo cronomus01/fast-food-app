@@ -21,12 +21,7 @@
           </ion-card-header>
           <ion-card-content class="ion-no-padding">
             <h2>P{{ item.price }}</h2>
-            <div>
-              <template v-for="index in 5">
-                <ion-icon v-if="index <= item.rating" :icon="star" color="secondary"></ion-icon>
-              </template>
-              <ion-icon v-if="(!Number.isInteger(item.rating))" :icon="starHalfSharp"  color="secondary"></ion-icon>
-            </div>
+            <rating :rating="item.rating"></rating>
           </ion-card-content>
         </ion-card>
         </router-link>
@@ -37,7 +32,7 @@
 
 <script setup lang="ts">
 import {IonGrid, IonRow, IonCol, IonImg, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonIcon, IonRippleEffect } from '@ionic/vue';
-import { star, starHalfSharp } from 'ionicons/icons';
+import Rating from './Rating.vue';
 
 const props = defineProps(['items', 'title'])
 </script>

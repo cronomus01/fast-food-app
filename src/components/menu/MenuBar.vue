@@ -5,7 +5,7 @@
         <menu-profile></menu-profile>
       </ion-toolbar>
     </ion-header>
-    <ion-content>
+    <ion-content content-id="menu-content">
       <div class="ion-padding">
         <menu-navigation></menu-navigation>
         <div class="divider"></div>

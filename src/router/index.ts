@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import { loadingStore } from '@/stores/loading';
-import { headerStore } from '@/stores/header';
+import { menuStore } from '@/stores/menu';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -22,6 +22,11 @@ const routes: Array<RouteRecordRaw> = [
     path: '/products',
     name: 'Our Foods',
     component: () => import('../views/ProductsPage.vue'),
+  },
+  {
+    path: '/products/:id',
+    name: 'Product Item',
+    component: () => import('../views/ProductItemPage.vue') 
   },
   {
     path: '/loading',
@@ -45,20 +50,11 @@ router.beforeEach((to, from, next) => {
     loading.setLoading(false);
   }, 200)
 
-  const header = headerStore();
-
-  if(to.path == '/login') {
-    header.setHeader(false)
-  }
   next()
 })
 
 // router.beforeResolve(() => {
 //   console.log('After route loaded, before navigation')
-//   const loading = loadingStore();
-//   setTimeout(() => {
-//     loading.setLoading(false);
-//   }, 200)
 // })
 
 router.afterEach((to, from) => {
@@ -70,10 +66,6 @@ router.afterEach((to, from) => {
   setTimeout(() => {
     loading.setLoading(false);
   }, 200)
-
-  const header = headerStore();
-  if(to.path !== '/login') {
-    header.setHeader(true)
-  }
+  
 })
 export default router
