@@ -129,7 +129,7 @@ http://ionicframework.com/docs/theming/ */
   --ion-placeholder-color: red;
 }
 
-@media (prefers-color-scheme: dark) {
+@media (prefers-color-scheme: light) {
   /*
    * Dark Colors
    * -------------------------------------------

@@ -1,0 +1,27 @@
+[
+  {
+    "id": 1,
+    "name": "Breakfast",
+    "link": "products/breakfasts"
+  },
+  {
+    "id": 2,
+    "name": "Chicken",
+    "link": "products/chickens"
+  },
+  {
+    "id": 3,
+    "name": "Seafood",
+    "link": "products/seafoods"
+  },
+  {
+    "id": 4,
+    "name": "Beef",
+    "link": "products/beefs"
+  },
+  {
+    "id": 5,
+    "name": "Dessert",
+    "link": "products/desserts"
+  }
+]

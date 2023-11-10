@@ -22,7 +22,7 @@
           </ion-item>
         </ion-list>
         <ion-buttons>
-          <ion-button fill="solid" expand="block" color="primary" class="ion-login-btn" router-link="/home">
+          <ion-button fill="solid" expand="block" color="primary" class="ion-login-btn" router-link="/home" id="open-loading">
             Login
           </ion-button>
           <ion-button fill="clear" expand="block" color="primary">

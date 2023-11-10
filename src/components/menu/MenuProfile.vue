@@ -5,7 +5,7 @@
               <ion-img :src="user.profile" alt="app-logo" class="logo"></ion-img>
           </ion-col>
           <ion-col class="ion-no-padding">
-              <app-header-points></app-header-points>
+              <app-points></app-points>
           </ion-col>
       </ion-row>
       <ion-row>
@@ -19,7 +19,7 @@
 
 <script setup lang="ts">
 import { IonGrid, IonRow, IonCol, IonImg } from '@ionic/vue';
-import AppHeaderPoints from '@/components/home/AppheaderPoints.vue';
+import AppPoints from '@/components/header/AppPoints.vue';
 
 const user = {
   username: 'chou_tyuzu',
@@ -45,6 +45,10 @@ p {
   margin: 0 !important;
   color: var(--ion-color-medium-tint);
   font-size: medium;
+}
+
+ion-img {
+  width: 100px;
 }
 
 

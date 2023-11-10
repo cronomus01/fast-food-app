@@ -1,23 +1,27 @@
 <template>
-   <ion-menu content-id="main-content">
+  <ion-menu content-id="main-content">
     <ion-header class="ion-no-border">
       <ion-toolbar>
         <menu-profile></menu-profile>
       </ion-toolbar>
     </ion-header>
-    <ion-content class="ion-padding">
-      <menu-navigation></menu-navigation>
-      <div class="divider"></div>
-      <menu-account-nav></menu-account-nav>
+    <ion-content>
+      <div class="ion-padding">
+        <menu-navigation></menu-navigation>
+        <div class="divider"></div>
+        <menu-account-nav></menu-account-nav>
+      </div>
     </ion-content>
-    <ion-footer class="ion-no-border ion-padding-top">
-      <ion-button>Logout</ion-button>
+    <ion-footer class="ion-no-border">
+      <ion-item class="ion-padding-top" lines="none">
+        <ion-button>Logout</ion-button>
+      </ion-item>
     </ion-footer>
   </ion-menu>
 </template>
 
 <script setup lang="ts">
-import { IonContent, IonHeader, IonTitle, IonToolbar, IonMenu, IonItem, IonButton, IonFooter } from '@ionic/vue';
+import { IonContent, IonHeader, IonTitle, IonToolbar, IonMenu, IonItem, IonButton, IonFooter, IonMenuToggle } from '@ionic/vue';
 import MenuProfile from './MenuProfile.vue';
 import MenuNavigation from './MenuNavigation.vue';
 import MenuAccountNav from './MenuAccountNav.vue';
@@ -46,6 +50,13 @@ ion-button {
   width: 50%;
   margin-left: 1em;
   margin-bottom: 2em;
+}
+
+ion-content {
+  --padding-start: 0 !important;
+  --padding-end: 0 !important;
+  --padding-bottom: 0 !important;
+  --padding-top: 0 !important;
 }
 
 .divider {

@@ -1,8 +1,8 @@
 <template>
   <ion-page>
-    <ion-content :fullscreen="true">
+    <div :fullscreen="true">
       <ion-img src="assets/logo-inverted.png"></ion-img>
-    </ion-content>
+    </div>
   </ion-page>
 </template>
 
