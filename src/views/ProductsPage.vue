@@ -4,10 +4,7 @@
     <template #header>
         <app-header>
             <template #points>
-              <h2>Our Foods</h2>
-            </template>
-            <template #profile>
-              <app-cart></app-cart>
+              <h2>Order Summary</h2>
             </template>
         </app-header>
       </template>

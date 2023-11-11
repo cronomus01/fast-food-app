@@ -28,6 +28,11 @@ const routes: Array<RouteRecordRaw> = [
     name: 'Loading',
     component: () => import('@/components/loading/Loading.vue')
   },
+  {
+    path: '/order-summary',
+    name: 'Order Summary',
+    component: () => import('../views/OrderSummaryPage.vue')
+  },
 ]
 
 const router = createRouter({
