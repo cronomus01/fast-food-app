@@ -5,7 +5,7 @@
     <ion-row>
         <ion-col>
             <app-search-bar placeholder="try our new Beef Bibimbowl">
-                <ion-img src="assets/app-icons/filter.png"></ion-img>
+                <ion-img src="assets/app-icons/filter.png" class="filter"></ion-img>
             </app-search-bar>
         </ion-col>
     </ion-row>
@@ -71,7 +71,7 @@ getOffers();
 </script>
 
 <style>
-ion-img {
+ion-img.filter {
     width: 28px;
 }
 </style>

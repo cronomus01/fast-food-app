@@ -9,14 +9,14 @@
       <ion-col>
         <h2>{{ item.name }}</h2>
         <rating :rating="item.rating"></rating>
-        <p class="ion-margin-top">{{ item.details }}</p>
+        <p class="ion-margin-top product-detail">{{ item.details }}</p>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-         <ion-toolbar>
-            <ion-buttons>
-              <ion-title color="primary">P {{item.price}}</ion-title>
+         <ion-toolbar color="none">
+            <ion-buttons class="add-quantity" mode="md">
+              <ion-title color="primary" slot="start">P {{item.price}}</ion-title>
               <ion-buttons slot="end">
                 <ion-button fill="solid" color="light"> + </ion-button>
                 <ion-button fill="clear"> 1 </ion-button>
@@ -97,14 +97,15 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-button fill="solid" color="primary" expand="block" class="add-to-bag" slot="fixed"> Add to Bag </ion-button>
+  <proceed-checkout></proceed-checkout>
 </template>
 
 
 <script setup lang="ts">
 
-import { IonToolbar, IonGrid, IonCol, IonRow, IonTitle, IonButtons, IonButton, IonItem, IonSelect, IonSelectOption, IonLabel, IonRadioGroup, IonRadio, IonImg, IonCheckbox, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonCardSubtitle, IonItemGroup } from '@ionic/vue';
-import { defineProps } from 'vue';
+import { IonToolbar, IonGrid, IonCol, IonRow, IonTitle, IonButtons, IonButton, IonItem, IonSelect, IonSelectOption, IonRadioGroup, IonRadio, IonImg, IonCheckbox, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonCardSubtitle, IonItemGroup } from '@ionic/vue';
+
+import { defineAsyncComponent, defineProps, ref } from 'vue';
 import type { PropType } from 'vue'
 import Rating from '../base/Rating.vue';
 
@@ -119,12 +120,17 @@ type ProductItem = {
   details: string,
 }
 
-
 const props = defineProps({
   item: Object as PropType<Array<ProductItem>>
 });
 
 const item = props.item![0];
+
+const ProceedCheckout = defineAsyncComponent({
+  loader: () => import('@/components/products/ProceedCheckout.vue'),
+  delay: 200,
+  timeout: 3000,
+})
 
 </script>
 
@@ -154,7 +160,7 @@ ion-col {
   padding: 0 !important;
 }
 
-p {
+.product-detail {
   color: var(--ion-color-medium);
 }
 
@@ -165,6 +171,7 @@ ion-title {
 
 ion-buttons {
   color: var(--ion-color-primary);
+  display: flex;
 }
 
 ion-button {
@@ -188,8 +195,6 @@ ion-item {
   /* --padding-start: 0px !important; */
 }
 
-
-
 ion-radio-group {
   margin-top: 1em;
   display: flex;
@@ -211,7 +216,6 @@ ion-radio {
 
   --color-checked: var(--ion-color-primary)
 }
-
 
 ion-radio::part(container) {
   justify-content: center;
@@ -334,20 +338,8 @@ ion-card .ion-font-bold {
   padding: 0 !important;
 } 
 
-
 ion-img {
   width: 30%;
   height: 100%;
 }
-
-ion-button[slot='fixed'] {
-  transform: translateX(50%);
-  right: 50%;
-  bottom: 0.5em;
-  margin: auto;
-  width: 92.5%;
-  --padding-top: 1em;
-  --padding-bottom: 1em;
-}
-
 </style>
