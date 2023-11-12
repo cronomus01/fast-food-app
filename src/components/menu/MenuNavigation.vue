@@ -7,7 +7,7 @@
       </router-link>
     </ion-item>
     <ion-item button>
-      <router-link to="/products" active-class="active" class="link">
+      <router-link to="/order-summary" active-class="active" class="link">
         <ion-img src="assets/app-icons/whh_chicken.png" slot="start" :active="true"></ion-img>
         <ion-label>Order Now!</ion-label>
       </router-link>
