@@ -1,51 +1,70 @@
 <template>
   <ion-list lines="none">
-    <ion-item href="/home" button>
+    <ion-item href="/home" button mode="md">
       <router-link to="/home" active-class="active" class="link">
         <ion-img src="assets/logo.png" slot="start"></ion-img>
         <ion-label>Home</ion-label>
       </router-link>
     </ion-item>
-    <ion-item button>
-      <router-link to="/order-summary" active-class="active" class="link">
-        <ion-img src="assets/app-icons/whh_chicken.png" slot="start" :active="true"></ion-img>
+    <ion-item button mode="md">
+      <router-link to="/products" active-class="active" class="link">
+        <ion-img
+          src="assets/app-icons/whh_chicken.png"
+          slot="start"
+          :active="true"
+        ></ion-img>
         <ion-label>Order Now!</ion-label>
       </router-link>
     </ion-item>
-    <ion-item button>
+    <ion-item button mode="md">
       <router-link to="/notifications" active-class="active" class="link">
         <ion-img src="assets/app-icons/bell.png" slot="start"></ion-img>
         <ion-label>Notifications</ion-label>
-        <ion-badge slot="end" color="secondary" >4</ion-badge>
+        <ion-badge slot="end" color="secondary">4</ion-badge>
       </router-link>
     </ion-item>
-    <ion-item button>
+    <ion-item button mode="md">
       <router-link to="/store-locator" active-class="active" class="link">
-        <ion-img src="assets/app-icons/bx_bxs-store-alt.png" slot="start"></ion-img>
+        <ion-img
+          src="assets/app-icons/bx_bxs-store-alt.png"
+          slot="start"
+        ></ion-img>
         <ion-label>Store Locator</ion-label>
-        </router-link>
+      </router-link>
     </ion-item>
-    <ion-item button>
+    <ion-item button mode="md">
       <router-link to="/faqs" active-class="active" class="link">
-        <ion-img src="assets/app-icons/eva_question-mark-circle-fill.png" slot="start"></ion-img>
+        <ion-img
+          src="assets/app-icons/eva_question-mark-circle-fill.png"
+          slot="start"
+        ></ion-img>
         <ion-label>FAQ's</ion-label>
       </router-link>
     </ion-item>
-</ion-list>
-
+  </ion-list>
 </template>
 
 <script setup lang="ts">
-import { IonLabel, IonImg, IonBadge, IonCol, IonRow, IonRippleEffect, IonGrid, IonList, IonItem, } from '@ionic/vue';
+import {
+  IonLabel,
+  IonImg,
+  IonBadge,
+  IonCol,
+  IonRow,
+  IonRippleEffect,
+  IonGrid,
+  IonList,
+  IonItem,
+} from "@ionic/vue";
 </script>
 
 <style scoped>
 ion-img {
-width: 25px;
+  width: 25px;
 }
 
 ion-item {
-  --padding-start: 16px;  
+  --padding-start: 16px;
   --background: transparent;
   border-radius: var(--ion-border-radius-md);
   display: flex;

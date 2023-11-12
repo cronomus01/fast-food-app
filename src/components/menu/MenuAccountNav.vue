@@ -1,50 +1,68 @@
 <template>
   <ion-list lines="none">
-    <ion-item button>
+    <ion-item button mode="md">
       <router-link to="/my-orders" active-class="active" class="link">
         <ion-img src="assets/app-icons/vector.png" slot="start"></ion-img>
         <ion-label>My Orders</ion-label>
         <ion-badge slot="end" color="secondary">4</ion-badge>
       </router-link>
     </ion-item>
-    <ion-item button>
+    <ion-item button mode="md">
       <router-link to="/my-account" active-class="active" class="link">
         <ion-img src="assets/app-icons/user.png" slot="start"></ion-img>
         <ion-label>My Account!</ion-label>
       </router-link>
     </ion-item>
-    <ion-item button>
+    <ion-item button mode="md">
       <router-link to="/my-favorites" active-class="active" class="link">
-        <ion-img src="assets/app-icons/ic_baseline-favorite.png" slot="start"></ion-img>
+        <ion-img
+          src="assets/app-icons/ic_baseline-favorite.png"
+          slot="start"
+        ></ion-img>
         <ion-label>My Favorites</ion-label>
       </router-link>
     </ion-item>
-    <ion-item button>
+    <ion-item button mode="md">
       <router-link to="/order-tracker" active-class="active" class="link">
-        <ion-img src="assets/app-icons/heroicons-solid_location-marker.png" slot="start"></ion-img>
+        <ion-img
+          src="assets/app-icons/heroicons-solid_location-marker.png"
+          slot="start"
+        ></ion-img>
         <ion-label>Order Tracker</ion-label>
       </router-link>
     </ion-item>
-    <ion-item button>
+    <ion-item button mode="md">
       <router-link to="/order-history" active-class="active" class="link">
-        <ion-img src="assets/app-icons/fa-solid_history.png" slot="start"></ion-img>
+        <ion-img
+          src="assets/app-icons/fa-solid_history.png"
+          slot="start"
+        ></ion-img>
         <ion-label>Order History</ion-label>
       </router-link>
     </ion-item>
-</ion-list>
+  </ion-list>
 </template>
 
 <script setup lang="ts">
-import {IonList, IonItem, IonIcon, IonLabel, IonImg, IonThumbnail, IonAvatar, IonBadge } from '@ionic/vue';
+import {
+  IonList,
+  IonItem,
+  IonIcon,
+  IonLabel,
+  IonImg,
+  IonThumbnail,
+  IonAvatar,
+  IonBadge,
+} from "@ionic/vue";
 </script>
 
 <style scoped>
 ion-img {
-width: 25px;
+  width: 25px;
 }
 
 ion-item {
-  --padding-start: 16px;  
+  --padding-start: 16px;
   --background: transparent;
   border-radius: var(--ion-border-radius-md);
   display: flex;
@@ -89,5 +107,4 @@ ion-item {
   color: var(--ion-color-primary-contrast);
   background-color: var(--ion-color-primary);
 }
-
 </style>
