@@ -1,38 +1,70 @@
 <template>
-    <h1 class="orders-title">Orders</h1>
-    <ion-grid class="orders">
-      <ion-row>
-        <ion-col>
-          <ion-list class="order-quantity">
-            <ion-item color="light" lines="none">
-              <ion-img src="assets/most-popular/steak-frieds-veggies.png"></ion-img>
-            </ion-item>
-            <ion-item color="light" lines="none">
-              <div>
-                <h4>Steak Fries Veggies</h4>
-                <p>1x Tomato Sauce</p>
-                <p>1x Regular Coke</p>
-                <p>1x Fried Chicken</p>
-              </div>
-            </ion-item>
-          </ion-list>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col class="order-summary-orders">
-          <h4>P 185</h4>
-          <ion-buttons>
-            <ion-button color="medium" fill="solid" class="ion-margin-right">-</ion-button>
-            <ion-label>1</ion-label>
-            <ion-button color="medium" fill="solid" class="ion-margin-left">+</ion-button>
-          </ion-buttons>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <h1 class="orders-title">Orders</h1>
+  <ion-grid class="orders">
+    <ion-row>
+      <ion-col>
+        <ion-list class="order-quantity">
+          <ion-item color="light" lines="none">
+            <ion-img
+              src="assets/most-popular/steak-frieds-veggies.png"
+            ></ion-img>
+          </ion-item>
+          <ion-item color="light" lines="none">
+            <div>
+              <h4>{{ myOrder.product.item!.name }}</h4>
+              <p v-for="addOn in myOrder.addOns">
+                <span v-if="addOn.selected"
+                  >{{ addOn.quantity }} {{ addOn.title }}</span
+                >
+              </p>
+            </div>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col class="order-summary-orders">
+        <h4>{{ myOrder.product.price! * myOrder.product.quantity! }}</h4>
+        <ion-buttons>
+          <ion-button
+            color="medium"
+            fill="solid"
+            class="ion-margin-right"
+            @click="order.addProductQuantity"
+          >
+            +
+          </ion-button>
+          <ion-label>{{ myOrder.product.quantity }}</ion-label>
+          <ion-button
+            color="medium"
+            fill="solid"
+            class="ion-margin-left"
+            @click="order.removeProductQuantity"
+          >
+            -
+          </ion-button>
+        </ion-buttons>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </template>
 
 <script setup lang="ts">
-import { IonGrid, IonRow, IonCol, IonItemGroup, IonItem, IonButtons, IonButton, IonLabel, IonList, IonImg } from '@ionic/vue';
+import {
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonItem,
+  IonButton,
+  IonLabel,
+  IonList,
+  IonImg,
+  IonButtons,
+} from "@ionic/vue";
+import { orderStore } from "@/stores/order";
+const order = orderStore();
+
+const myOrder = order.getOrder();
 </script>
 
 <style scoped>
@@ -83,11 +115,9 @@ ion-col.order-summary-orders ion-grid {
   align-items: center;
 }
 
-
 ion-col.order-summary-orders ion-grid ion-row {
   width: 100%;
 }
-
 
 ion-col.order-summary-orders ion-grid ion-col {
   display: flex;

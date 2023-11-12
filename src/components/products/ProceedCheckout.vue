@@ -71,32 +71,11 @@ import {
   IonToolbar,
   IonTitle,
 } from "@ionic/vue";
-import { OverlayEventDetail } from "@ionic/core/components";
-
 import { ref } from "vue";
 
 const isOpen = ref(false);
 
 const setOpen = (open: boolean) => (isOpen.value = open);
-
-const cancel = () => modal.value.$el.dismiss(null, "cancel");
-
-const modal = ref();
-
-const message = ref(
-  "This modal example uses triggers to automatically open a modal when the button is clicked."
-);
-
-console.log(isOpen.value);
-
-const confirm = () => {
-  modal.value.$el.dismiss(name, "confirm");
-};
-// const onWillDismiss = (ev: CustomEvent<OverlayEventDetail>) => {
-//   if (ev.detail.role === 'confirm') {
-//     message.value = `Hello, ${ev.detail.data}!`;
-//   }
-// };
 </script>
 
 <style scope>

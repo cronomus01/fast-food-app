@@ -2,27 +2,43 @@
   <ion-grid class="ion-margin-top">
     <ion-row>
       <ion-col>
-        <img :src="item.image" :alt="item.name" />
+        <img :src="productItem?.image" :alt="productItem?.name" />
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <h2>{{ item.name }}</h2>
-        <rating :rating="item.rating"></rating>
-        <p class="ion-margin-top product-detail">{{ item.details }}</p>
+        <h2>{{ productItem?.name }}</h2>
+        <rating :rating="productItem?.rating"></rating>
+        <p class="ion-margin-top product-detail">{{ productItem?.details }}</p>
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-         <ion-toolbar color="none">
-            <ion-buttons class="add-quantity" mode="md">
-              <ion-title color="primary" slot="start">P {{item.price}}</ion-title>
-              <ion-buttons slot="end">
-                <ion-button fill="solid" color="light"> + </ion-button>
-                <ion-button fill="clear"> 1 </ion-button>
-                <ion-button fill="solid" color="light"> - </ion-button>
-              </ion-buttons>
+        <ion-toolbar color="none">
+          <ion-buttons class="add-quantity" mode="md">
+            <ion-title color="primary" slot="start"
+              >P{{ productItem.price * order.getProduct().quantity }}</ion-title
+            >
+            <ion-buttons slot="end">
+              <ion-button
+                fill="solid"
+                color="light"
+                @click="order.addProductQuantity"
+              >
+                +
+              </ion-button>
+              <ion-button fill="clear">
+                {{ order.getProduct().quantity }}
+              </ion-button>
+              <ion-button
+                fill="solid"
+                color="light"
+                @click="order.removeProductQuantity"
+              >
+                -
+              </ion-button>
             </ion-buttons>
+          </ion-buttons>
         </ion-toolbar>
       </ion-col>
     </ion-row>
@@ -30,16 +46,25 @@
       <ion-col>
         <h5>Beverages</h5>
         <ion-item lines="none">
-            <ion-select label="Choose beverages" label-placement="stacked">
-              <ion-select-option value="coke">Coke</ion-select-option>
-              <ion-select-option value="sprite">Sprite</ion-select-option>
-              <ion-select-option value="iced-tea">Iced Tea</ion-select-option>
-            </ion-select>
+          <ion-select
+            label="Choose beverages"
+            label-placement="stacked"
+            @ion-change="order.selectedBeverage"
+          >
+            <ion-select-option value="coke">Coke</ion-select-option>
+            <ion-select-option value="sprite">Sprite</ion-select-option>
+            <ion-select-option value="iced-tea">Iced Tea</ion-select-option>
+          </ion-select>
         </ion-item>
-        <ion-radio-group value="strawberries">
-          <ion-radio value="grapes" class="beverage-radio" alignment="center">Regular</ion-radio>
-          <ion-radio value="strawberries" class="beverage-radio">Large</ion-radio>
-          <ion-radio value="pineapple" class="beverage-radio">X-Large</ion-radio>
+        <ion-radio-group
+          value="strawberries"
+          @ion-change="order.selectedBeverageSize"
+        >
+          <ion-radio value="regular" class="beverage-radio" alignment="center"
+            >Regular</ion-radio
+          >
+          <ion-radio value="large" class="beverage-radio">Large</ion-radio>
+          <ion-radio value="xl" class="beverage-radio">X-Large</ion-radio>
         </ion-radio-group>
       </ion-col>
     </ion-row>
@@ -47,52 +72,59 @@
       <ion-col>
         <h5>Add Ons</h5>
         <ion-item lines="none" class="add-on">
-           <ion-grid>
-            <ion-row>
+          <ion-grid>
+            <ion-row v-for="addOn in order.getAddOns()">
               <ion-col>
                 <ion-card class="ion-padding text-center ion-no-border">
                   <ion-card-header class="ion-no-padding">
                     <ion-img src="assets/app-icons/sauce-1.png"></ion-img>
                     <ion-item-group>
-                      <ion-card-title color="dark">Tomato Sauce</ion-card-title>
-                      <ion-card-subtitle class="ion-text-capitalize" color="medium">Sauce</ion-card-subtitle>
-                      <ion-card-subtitle class="ion-text-capitalize ion-font-bold ion-margin-top" color="primary">P49</ion-card-subtitle>
+                      <ion-card-title color="dark">{{
+                        addOn.title
+                      }}</ion-card-title>
+                      <ion-card-subtitle
+                        class="ion-text-capitalize"
+                        color="medium"
+                        >{{ addOn.category }}</ion-card-subtitle
+                      >
+                      <ion-card-subtitle
+                        class="ion-text-capitalize ion-font-bold ion-margin-top"
+                        color="primary"
+                        >{{ addOn.price * addOn.quantity }}</ion-card-subtitle
+                      >
                     </ion-item-group>
                   </ion-card-header>
                   <ion-card-content class="ion-no-padding increase-add-on">
-                    <ion-checkbox value="tomato-sauce" class="add-ons-radio ion-margin-bottom" mode="ios"></ion-checkbox>
+                    <ion-checkbox
+                      @ion-change="order.selectedAddOn"
+                      :value="addOn.id"
+                      class="add-ons-radio ion-margin-bottom"
+                      mode="ios"
+                    ></ion-checkbox>
                     <ion-buttons slot="end" class="ion-martin-top">
-                      <ion-button fill="solid" color="medium"> - </ion-button>
-                      <ion-button fill="clear"> 1 </ion-button>
-                      <ion-button fill="solid" color="medium"> + </ion-button>
+                      <ion-button
+                        fill="solid"
+                        color="medium"
+                        @click="order.addAddOnQuantity(addOn.id)"
+                      >
+                        +
+                      </ion-button>
+                      <ion-title>
+                        {{ addOn.quantity }}
+                      </ion-title>
+                      <ion-button
+                        fill="solid"
+                        color="medium"
+                        @click="order.removeAddOnQuantity(addOn.id)"
+                      >
+                        -
+                      </ion-button>
                     </ion-buttons>
                   </ion-card-content>
                 </ion-card>
               </ion-col>
             </ion-row>
-            <ion-row>
-              <ion-col>
-                <ion-card class="ion-padding text-center ion-no-border">
-                  <ion-card-header class="ion-no-padding">
-                      <ion-img src="assets/app-icons/sauce-1.png"></ion-img>
-                      <ion-item-group>
-                        <ion-card-title color="dark">White Rice</ion-card-title>
-                        <ion-card-subtitle class="ion-text-capitalize" color="medium">Rice</ion-card-subtitle>
-                        <ion-card-subtitle class="ion-text-capitalize ion-margin-top" color="primary">P 25</ion-card-subtitle>
-                      </ion-item-group>
-                    </ion-card-header>
-                  <ion-card-content class="ion-no-padding increase-add-on">
-                    <ion-checkbox value="tomato-sauce" class="add-ons-radio ion-margin-bottom" mode="ios"></ion-checkbox>
-                      <ion-buttons slot="end">
-                        <ion-button fill="solid" color="medium"> - </ion-button>
-                        <ion-button fill="clear"> 1 </ion-button>
-                        <ion-button fill="solid" color="medium"> + </ion-button>
-                      </ion-buttons>
-                  </ion-card-content>
-                </ion-card>
-              </ion-col>
-            </ion-row>
-           </ion-grid>
+          </ion-grid>
         </ion-item>
       </ion-col>
     </ion-row>
@@ -100,38 +132,105 @@
   <proceed-checkout></proceed-checkout>
 </template>
 
-
 <script setup lang="ts">
+import {
+  IonToolbar,
+  IonGrid,
+  IonCol,
+  IonRow,
+  IonTitle,
+  IonButtons,
+  IonButton,
+  IonItem,
+  IonSelect,
+  IonSelectOption,
+  IonRadioGroup,
+  IonRadio,
+  IonImg,
+  IonCheckbox,
+  IonCard,
+  IonCardContent,
+  IonCardTitle,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonItemGroup,
+  IonLabel,
+} from "@ionic/vue";
 
-import { IonToolbar, IonGrid, IonCol, IonRow, IonTitle, IonButtons, IonButton, IonItem, IonSelect, IonSelectOption, IonRadioGroup, IonRadio, IonImg, IonCheckbox, IonCard, IonCardContent, IonCardTitle, IonCardHeader, IonCardSubtitle, IonItemGroup } from '@ionic/vue';
-
-import { defineAsyncComponent, defineProps, ref } from 'vue';
-import type { PropType } from 'vue'
-import Rating from '../base/Rating.vue';
+import {
+  computed,
+  defineAsyncComponent,
+  defineProps,
+  onBeforeMount,
+  onMounted,
+  reactive,
+  ref,
+} from "vue";
+import type { PropType } from "vue";
+import Rating from "../base/Rating.vue";
+import { add } from "ionicons/icons";
+import { orderStore } from "@/stores/order";
+import { useRoute } from "vue-router";
+import productsData from "@/assets/data/products.json";
 
 type ProductItem = {
-  id: number,
-  productId: number,
-  image: string,
-  name: string,
-  category: string,
-  rating: number,
-  price: number,
-  details: string,
-}
+  id: number;
+  productId: number;
+  image: string;
+  name: string;
+  category: string;
+  rating: number;
+  price: number;
+  details: string;
+};
 
-const props = defineProps({
-  item: Object as PropType<Array<ProductItem>>
-});
+const productItem = ref({});
+const route = useRoute();
 
-const item = props.item![0];
+const getProduct = async () => {
+  try {
+    const product = productsData.filter((product) => {
+      const id = Number(route.params.id);
+      if (product.id == id) {
+        return product;
+      }
+    });
+
+    const data = await new Promise<ProductItem>((resolve, reject) => {
+      setTimeout(() => {
+        const newProduct = product![0];
+        resolve(newProduct);
+      });
+    });
+
+    if (data) {
+      productItem.value = data;
+      order.setOrder(data);
+    }
+  } catch (err) {
+    if (err instanceof Error) {
+      console.log(err.message);
+    }
+  }
+};
+
+const order = orderStore();
 
 const ProceedCheckout = defineAsyncComponent({
-  loader: () => import('@/components/products/ProceedCheckout.vue'),
+  loader: () => import("@/components/products/ProceedCheckout.vue"),
   delay: 200,
   timeout: 3000,
-})
+});
 
+onBeforeMount(async () => {
+  await getProduct();
+  console.log(productItem.value);
+  order.setOrder(productItem.value);
+});
+
+onMounted(() => {
+  console.log(productItem.value);
+});
 </script>
 
 <style scoped>
@@ -142,12 +241,9 @@ img {
 }
 
 ion-button {
-  /* border-radius: 30px !important; */
   --border-radius: 10px !important;
   font-weight: bold;
   font-size: 1em;
-  /* --padding-left: 1em !important; */
-  /* --padding-right: 1em !important; */
   width: 35px;
 }
 
@@ -172,6 +268,7 @@ ion-title {
 ion-buttons {
   color: var(--ion-color-primary);
   display: flex;
+  gap: 1em;
 }
 
 ion-button {
@@ -185,14 +282,12 @@ ion-select {
 }
 
 ion-label {
-  /* width: fit-content !important; */
   pointer-events: none;
 }
 
 ion-item {
   border-radius: var(--ion-border-radius-md);
   border: 1px solid var(--ion-color-light);
-  /* --padding-start: 0px !important; */
 }
 
 ion-radio-group {
@@ -213,8 +308,7 @@ ion-radio {
   border-radius: var(--ion-border-radius-md);
   --inline-margin-end: 0px !important;
   margin: 0 !important;
-
-  --color-checked: var(--ion-color-primary)
+  --color-checked: var(--ion-color-primary);
 }
 
 ion-radio::part(container) {
@@ -224,7 +318,6 @@ ion-radio::part(container) {
   width: 1em;
   height: 1em;
   border: 1px solid var(--ion-color-light-tint);
-  /* display: none; */
 }
 
 ion-radio::part(mark) {
@@ -233,7 +326,6 @@ ion-radio::part(mark) {
   transform: none;
   border-radius: 0;
 }
-
 
 ion-radio.radio-checked {
   background-color: var(--ion-color-secondary);
@@ -250,12 +342,7 @@ ion-radio.radio-checked::part(mark) {
   border-width: 0px 2px 2px 0px;
   border-style: solid;
   border-color: var(--ion-color-primary);
-
   transform: rotate(45deg);
-}
-
-ion-radio::part(container) {
-  /* display: none; */
 }
 
 ion-checkbox {
@@ -265,15 +352,12 @@ ion-checkbox {
   --checkbox-background-checked: var(--ion-color-primary-contrast);
   --border-width: 0px !important;
   --checkmark-color: var(--ion-color-secondary);
-  /* background-color: red; */
   --background: transparent;
   --checkmark-width: 2;
 }
 
 ion-checkbox.checkbox-checked {
-  /* background-color: var(--ion-color-primary-contrast); */
   border-color: var(--ion-color-secondary) !important;
-
 }
 
 ion-img {
@@ -286,7 +370,6 @@ ion-card {
   background-color: var(--ion-color-light);
   display: flex !important;
   gap: 0.5em !important;
-  /* margin:  0 !important; */
   border-radius: var(--ion-border-radius-md);
   margin-inline: 0px !important;
   margin-bottom: 0 !important;
@@ -306,7 +389,6 @@ ion-card ion-card-content {
   align-items: end;
 }
 
-
 ion-card ion-card-header {
   display: flex;
   gap: 1.2em;
@@ -316,7 +398,6 @@ ion-card ion-card-header {
 ion-card .ion-font-bold {
   font-weight: bold;
 }
-
 
 .add-on {
   --padding-start: 0px !important;
@@ -336,7 +417,7 @@ ion-card .ion-font-bold {
   align-items: center;
   flex-direction: column;
   padding: 0 !important;
-} 
+}
 
 ion-img {
   width: 30%;
