@@ -73,7 +73,7 @@
     <ion-row>
       <ion-col>
         <h5>Add Ons</h5>
-        <ion-item lines="none" class="add-on">
+        <ion-item lines="none" class="add-on" color="clear">
           <ion-grid>
             <ion-row v-for="addOn in order.getAddOns()">
               <ion-col>
