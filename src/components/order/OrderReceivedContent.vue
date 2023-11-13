@@ -9,9 +9,9 @@
       <ion-col class="ion-text-center">
         <h1>Order Received!</h1>
         <p>
-          Your order <span>No. 19049585</span> has successfully take and now
-          being processed. Kindly wait for our notification regarding your
-          order.
+          Your order <span>No. {{ order.getOrder().orderNumber }}</span> has
+          successfully take and now being processed. Kindly wait for our
+          notification regarding your order.
         </p>
       </ion-col>
     </ion-row>
@@ -38,6 +38,10 @@ import {
   IonButton,
   IonItem,
 } from "@ionic/vue";
+
+import { orderStore } from "@/stores/order";
+
+const order = orderStore();
 </script>
 
 <style scoped>

@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 import { reactive, ref, watch } from 'vue';
+import router from '@/router';
 
 // interface order {
 //   isLoaded: () => boolean
@@ -16,14 +17,14 @@ type Product = {
 };
 
 type ProductItem = {
-  id: number;
-  productId: number;
-  image: string;
-  name: string;
-  category: string;
-  rating: number;
-  price: number;
-  details: string;
+  id?: number;
+  productId?: number;
+  image?: string;
+  name?: string;
+  category?: string;
+  rating?: number;
+  price?: number;
+  details?: string;
 };
 
 interface AddOn {
@@ -196,6 +197,12 @@ export const orderStore = defineStore('order', (): OrderStore => {
       });
     }
   };
+
+  // router.afterEach(() => {
+  //   order.addOns.forEach(addOn => {
+  //     addOn.selected = false;
+  //   })
+  // })
 
   return {setOrder, getProduct, addProductQuantity, removeProductQuantity, selectedBeverage, selectedBeverageSize, getAddOns, selectedAddOn, addAddOnQuantity, removeAddOnQuantity, getOrder}
 })

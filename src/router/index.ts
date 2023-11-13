@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import { RouteRecordRaw } from 'vue-router';
 import { loadingStore } from '@/stores/loading';
 import { menuStore } from '@/stores/menu';
+import { orderStore } from '@/stores/order';
 
 const routes: Array<RouteRecordRaw> = [
   {
@@ -70,12 +71,13 @@ router.beforeEach((to, from, next) => {
 router.afterEach((to, from) => {
   console.log('After navigation')
   const loading = loadingStore();
+
+  const order = orderStore();
   
   loading.setLoading(true);
   
   setTimeout(() => {
     loading.setLoading(false);
   }, 200)
-  
 })
 export default router

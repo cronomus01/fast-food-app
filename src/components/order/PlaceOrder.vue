@@ -3,7 +3,7 @@
     <ion-row>
       <ion-col size="4">
         <h4>Grand Total</h4>
-        <p>P 244</p>
+        <p>P {{ orderGrandTotal }}</p>
       </ion-col>
       <ion-col>
         <ion-button router-link="/order-received">Place Order</ion-button>
@@ -14,6 +14,23 @@
 
 <script setup lang="ts">
 import { IonGrid, IonRow, IonCol, IonButton } from "@ionic/vue";
+import { orderStore } from "@/stores/order";
+import { computed, ref } from "vue";
+
+const order = orderStore();
+const deliveryFee = ref(59);
+
+const orderGrandTotal = computed(() => {
+  let addOnprice = deliveryFee.value;
+
+  addOnprice += order.getProduct().price! * order.getProduct().quantity!;
+
+  order.getAddOns().forEach((addOn) => {
+    addOnprice += addOn.price * addOn.quantity;
+  });
+
+  return addOnprice;
+});
 </script>
 
 <style scoped>

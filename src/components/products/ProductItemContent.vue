@@ -2,14 +2,14 @@
   <ion-grid class="ion-margin-top">
     <ion-row>
       <ion-col>
-        <img :src="productItem?.image" :alt="productItem?.name" />
+        <img :src="productItem.image" :alt="productItem.name" />
       </ion-col>
     </ion-row>
     <ion-row>
       <ion-col>
-        <h2>{{ productItem?.name }}</h2>
-        <rating :rating="productItem?.rating"></rating>
-        <p class="ion-margin-top product-detail">{{ productItem?.details }}</p>
+        <h2>{{ productItem.name }}</h2>
+        <rating :rating="productItem.rating"></rating>
+        <p class="ion-margin-top product-detail">{{ productItem.details }}</p>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -17,7 +17,9 @@
         <ion-toolbar color="none">
           <ion-buttons class="add-quantity" mode="md">
             <ion-title color="primary" slot="start"
-              >P{{ productItem.price * order.getProduct().quantity }}</ion-title
+              >P{{
+                productItem.price! * order.getProduct().quantity!
+              }}</ion-title
             >
             <ion-buttons slot="end">
               <ion-button
@@ -100,6 +102,7 @@
                       :value="addOn.id"
                       class="add-ons-radio ion-margin-bottom"
                       mode="ios"
+                      :checked="addOn.selected"
                     ></ion-checkbox>
                     <ion-buttons slot="end" class="ion-martin-top">
                       <ion-button
@@ -174,17 +177,17 @@ import { useRoute } from "vue-router";
 import productsData from "@/assets/data/products.json";
 
 type ProductItem = {
-  id: number;
-  productId: number;
-  image: string;
-  name: string;
-  category: string;
-  rating: number;
-  price: number;
-  details: string;
+  id?: number;
+  productId?: number;
+  image?: string;
+  name?: string;
+  category?: string;
+  rating?: number;
+  price?: number;
+  details?: string;
 };
 
-const productItem = ref({});
+const productItem = ref<ProductItem>({});
 const route = useRoute();
 
 const getProduct = async () => {
@@ -224,8 +227,8 @@ const ProceedCheckout = defineAsyncComponent({
 
 onBeforeMount(async () => {
   await getProduct();
-  console.log(productItem.value);
-  order.setOrder(productItem.value);
+  // console.log(productItem.value);
+  // order.setOrder(productItem.value);
 });
 
 onMounted(() => {

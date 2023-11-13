@@ -11,8 +11,10 @@
 
     <ion-item lines="none">
       <ion-label>
-        <h2>Loyalty Points <span>({{ points }} points)</span></h2>
-        <p>Pay  using your earned loyalty points</p>
+        <h2>
+          Loyalty Points <span>({{ points }} points)</span>
+        </h2>
+        <p>Pay using your earned loyalty points</p>
       </ion-label>
       <ion-radio slot="end" value="loyalty-points"></ion-radio>
     </ion-item>
@@ -37,7 +39,7 @@
     <ion-row>
       <ion-col>
         <h6>Subtotal</h6>
-        <h6>P 185</h6>
+        <h6>P {{ addOnSubTotal }}</h6>
       </ion-col>
     </ion-row>
     <ion-row>
@@ -50,10 +52,33 @@
 </template>
 
 <script setup lang="ts">
-import { IonRadioGroup, IonItem, IonLabel, IonRadio, IonGrid, IonRow, IonCol, IonImg } from '@ionic/vue';
-import { ref } from 'vue';
+import {
+  IonRadioGroup,
+  IonItem,
+  IonLabel,
+  IonRadio,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonImg,
+} from "@ionic/vue";
+import { computed, ref } from "vue";
 
-const points = ref(0)
+import { orderStore } from "@/stores/order";
+
+const order = orderStore();
+
+const addOnSubTotal = computed(() => {
+  let addOnprice = 0;
+
+  order.getAddOns().forEach((addOn) => {
+    addOnprice += addOn.price * addOn.quantity;
+  });
+
+  return addOnprice;
+});
+
+const points = ref(0);
 </script>
 
 <style scoped>
@@ -76,14 +101,12 @@ ion-radio-group.order-radio-group ion-img {
 }
 
 ion-radio-group.order-radio-group ion-item h2 {
- font-weight: bold;
+  font-weight: bold;
 }
 
 ion-radio-group.order-radio-group ion-item h2 span {
- color: var(--ion-color-primary);
+  color: var(--ion-color-primary);
 }
-
-
 
 ion-radio-group.order-radio-group {
   display: flex;

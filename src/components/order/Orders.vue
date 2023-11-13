@@ -12,9 +12,12 @@
           <ion-item color="light" lines="none">
             <div>
               <h4>{{ myOrder.product.item!.name }}</h4>
-              <p v-for="addOn in myOrder.addOns">
+              <p v-for="addOn in myOrder.addOns" class="add-on-selected">
                 <span v-if="addOn.selected"
-                  >{{ addOn.quantity }} {{ addOn.title }}</span
+                  >{{ addOn.quantity }}x {{ addOn.title }}</span
+                >
+                <span class="add-on-price ion-margin-start"
+                  >P {{ addOn.price * addOn.quantity }}</span
                 >
               </p>
             </div>
@@ -24,7 +27,9 @@
     </ion-row>
     <ion-row>
       <ion-col class="order-summary-orders">
-        <h4>{{ myOrder.product.price! * myOrder.product.quantity! }}</h4>
+        <h4 color="primary">
+          P {{ myOrder.product.price! * myOrder.product.quantity! }}
+        </h4>
         <ion-buttons>
           <ion-button
             color="medium"
@@ -34,7 +39,7 @@
           >
             +
           </ion-button>
-          <ion-label>{{ myOrder.product.quantity }}</ion-label>
+          <ion-label color="primary">{{ myOrder.product.quantity }}</ion-label>
           <ion-button
             color="medium"
             fill="solid"
@@ -87,6 +92,16 @@ ion-grid.orders ion-list.order-quantity {
 ion-grid.orders ion-list.order-quantity p {
   margin: 0;
 }
+
+ion-grid.orders .add-on-price {
+  color: var(--ion-color-primary);
+}
+
+ion-grid.orders .add-on-selected {
+  display: flex;
+  justify-content: space-between;
+}
+
 ion-col.order-summary-orders {
   width: 100%;
   display: flex;
@@ -99,7 +114,15 @@ ion-col.order-summary-orders ion-buttons {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 0.5em;
+  gap: 1em;
+}
+
+ion-col.order-summary-orders ion-button {
+  color: var(--ion-color-primary);
+  --border-radius: 10px !important;
+  font-weight: bold;
+  font-size: 1em;
+  width: 35px;
 }
 
 ion-col.order-summary-orders h4 {
@@ -107,6 +130,7 @@ ion-col.order-summary-orders h4 {
   justify-content: space-between;
   align-items: center; */
   margin: 0;
+  color: var(--ion-color-primary);
 }
 
 ion-col.order-summary-orders ion-grid {
