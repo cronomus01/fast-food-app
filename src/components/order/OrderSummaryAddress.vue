@@ -12,7 +12,7 @@
     </ion-item>
   </ion-radio-group> -->
 
-  <ion-radio-group class="order-radio-group">
+  <ion-radio-group class="order-radio-group" value="my-home-address">
     <ion-list :inset="true" class="address-list">
       <ion-item-sliding @click="selected()">
         <ion-item :button="true" lines="none">
@@ -36,9 +36,17 @@
         <ion-item :button="true" lines="none">
           <ion-label>
             <h2>My Home Address</h2>
-            <p>No. 21 St. Agustin Street, Brgy. De Jose Delgado City 2234 Philippines</p>
+            <p>
+              No. 21 St. Agustin Street, Brgy. De Jose Delgado City 2234
+              Philippines
+            </p>
           </ion-label>
-          <ion-radio slot="end" value="my-home-address" id="home"></ion-radio>
+          <ion-radio
+            slot="end"
+            value="my-home-address"
+            id="home"
+            :checked="true"
+          ></ion-radio>
         </ion-item>
 
         <ion-item-options slot="end">
@@ -55,7 +63,9 @@
         <ion-item :button="true" lines="none">
           <ion-label>
             <h2>Work/Office</h2>
-            <p>3rd flr Anyeong Bldg. Seareal St. Joaqin City 3456 Philippines</p>
+            <p>
+              3rd flr Anyeong Bldg. Seareal St. Joaqin City 3456 Philippines
+            </p>
           </ion-label>
           <ion-radio slot="end" value="work-office"></ion-radio>
         </ion-item>
@@ -73,22 +83,32 @@
 </template>
 
 <script setup lang="ts">
-import { IonRadio, IonItemGroup, IonRadioGroup, IonItem, IonLabel, IonText, IonList, IonItemSliding, IonItemOption, IonItemOptions, IonIcon } from '@ionic/vue';
-import { pin, share, trash, pencil } from 'ionicons/icons';
+import {
+  IonRadio,
+  IonItemGroup,
+  IonRadioGroup,
+  IonItem,
+  IonLabel,
+  IonText,
+  IonList,
+  IonItemSliding,
+  IonItemOption,
+  IonItemOptions,
+  IonIcon,
+} from "@ionic/vue";
+import { pin, share, trash, pencil } from "ionicons/icons";
 
 const selected = () => {
-  console.log('test')
-}
+  console.log("test");
+};
 </script>
 
-
 <style scoped>
-
 ion-radio-group.order-radio-group ion-item {
   display: flex;
   flex-direction: column;
   --background: var(--ion-color-light);
-  --border-radius: var(--ion-border-radius-md)
+  --border-radius: var(--ion-border-radius-md);
 }
 
 ion-radio-group.order-radio-group ion-item-group {
@@ -107,22 +127,22 @@ ion-radio-group.order-radio-group h1 {
 }
 
 ion-radio {
-    width: 15px;
-    height: 15px;
-  }
+  width: 15px;
+  height: 15px;
+}
 
-  ion-radio::part(container) {
-    border-radius: 50%;
-    border: 2px solid var(--ion-color-primary-contrast);
-  }
+ion-radio::part(container) {
+  border-radius: 50%;
+  border: 2px solid var(--ion-color-primary-contrast);
+}
 
-  ion-radio::part(mark) {
-    background: none;
-    transition: none;
-    transform: none;
-    border-radius: 0;
-    display: none;
-  }
+ion-radio::part(mark) {
+  background: none;
+  transition: none;
+  transform: none;
+  border-radius: 0;
+  display: none;
+}
 
 ion-radio.radio-checked::part(container) {
   background: var(--ion-color-secondary);
@@ -131,7 +151,6 @@ ion-radio.radio-checked::part(container) {
 }
 
 ion-radio.radio-checked::part(mark) {
-  
 }
 
 ion-list.address-list {
@@ -174,7 +193,4 @@ ion-list.address-list ion-items-options ion-item-option:first-of-type {
   border-radius: var(--ion-border-radius-md);
   margin-left: 0.5em;
 }
-
-
 </style>
-

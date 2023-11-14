@@ -16,7 +16,7 @@ type Product = {
   price?: number,
 };
 
-type ProductItem = {
+interface ProductItem {
   id?: number;
   productId?: number;
   image?: string;
@@ -83,7 +83,7 @@ const addOns = [
 
 export const orderStore = defineStore('order', (): OrderStore => {
 
-  const product = reactive({
+  const product = reactive<Product>({
     item: {
       id: 0,
       productId: 0,
@@ -98,15 +98,15 @@ export const orderStore = defineStore('order', (): OrderStore => {
     price: 0,
   });
   
-  const beverage = reactive({
+  const beverage = reactive<Beverage>({
     item: undefined,
     size: undefined,
   });
 
   const setOrder = (item: ProductItem) => {
-    product.item = item;
-    product.quantity = 1;
-    product.price = item.price;
+      product.item = item;
+      product.quantity = 1;
+      product.price = item.price;
   }
   
   const addOnArray = ref<Array<AddOn>>(addOns);
@@ -119,14 +119,19 @@ export const orderStore = defineStore('order', (): OrderStore => {
   });
   
   const addProductQuantity = () => {
-    // Add more product
-    product.quantity += 1;
+    if(product.quantity) {
+      // Add more product
+      product.quantity += 1;
+    }
+  
 
     order.product = product;
   };
   
   const removeProductQuantity = () => {
-    product.quantity -= 1;
+    if(product.quantity) {
+      product.quantity -= 1;
+    }
   
     console.log(order);
   };

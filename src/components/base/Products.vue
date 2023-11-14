@@ -6,24 +6,39 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-grid :class="`ion-no-padding ${props.title && 'ion-margin-top'}`" when="md">
+  <ion-grid
+    :class="`ion-no-padding ${props.title && 'ion-margin-top'}`"
+    when="md"
+  >
     <ion-row class="most-popular-row">
       <ion-col v-for="item of props.items">
-        <router-link :to="`/products/${item.id}`" active-class="active" class="link">
-          <ion-card class="ion-padding text-center ion-activatable ripple-parent">
-          <ion-ripple-effect></ion-ripple-effect>
-          <div class="ion-card-img">
-            <ion-img :src="item.image" :alt="item.name" class="most-popular"></ion-img>
-          </div>
-          <ion-card-header class="ion-no-padding">
-            <ion-card-subtitle class="ion-text-capitalize">{{ item.category }}</ion-card-subtitle>
-            <ion-card-title>{{ item.name }}</ion-card-title>
-          </ion-card-header>
-          <ion-card-content class="ion-no-padding">
-            <h2>P{{ item.price }}</h2>
-            <rating :rating="item.rating"></rating>
-          </ion-card-content>
-        </ion-card>
+        <router-link
+          :to="`/products/${item.id}`"
+          active-class="active"
+          class="link"
+        >
+          <ion-card
+            class="ion-padding text-center ion-activatable ripple-parent"
+          >
+            <ion-ripple-effect></ion-ripple-effect>
+            <div class="ion-card-img">
+              <ion-img
+                :src="item.image"
+                :alt="item.name"
+                class="most-popular"
+              ></ion-img>
+            </div>
+            <ion-card-header class="ion-no-padding">
+              <ion-card-subtitle class="ion-text-capitalize">{{
+                item.category
+              }}</ion-card-subtitle>
+              <ion-card-title>{{ item.name }}</ion-card-title>
+            </ion-card-header>
+            <ion-card-content class="ion-no-padding">
+              <h2>P{{ item.price }}</h2>
+              <rating :rating="item.rating"></rating>
+            </ion-card-content>
+          </ion-card>
         </router-link>
       </ion-col>
     </ion-row>
@@ -31,14 +46,25 @@
 </template>
 
 <script setup lang="ts">
-import {IonGrid, IonRow, IonCol, IonImg, IonCard, IonCardHeader, IonCardSubtitle, IonCardTitle, IonCardContent, IonIcon, IonRippleEffect } from '@ionic/vue';
-import Rating from './Rating.vue';
+import {
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonImg,
+  IonCard,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonCardContent,
+  IonIcon,
+  IonRippleEffect,
+} from "@ionic/vue";
+import Rating from "./Rating.vue";
 
-const props = defineProps(['items', 'title'])
+const props = defineProps(["items", "title"]);
 </script>
 
 <style scoped>
-
 ion-col {
   padding: 0 !important;
   --background: antiquewhite;
@@ -55,9 +81,9 @@ ion-img.most-popular {
 
 ion-row.most-popular-row {
   display: flex;
-  flex-wrap: wrap;
   gap: 0.5em !important;
   justify-content: center;
+  align-items: center;
 }
 
 ion-card {
@@ -93,5 +119,4 @@ h2 {
 .link {
   text-decoration: none;
 }
-
 </style>

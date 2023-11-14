@@ -22,13 +22,19 @@
 </template>
 
 <script setup lang="ts">
-import productCategoryData from '@/assets/data/product-category.json';
-import { IonGrid, IonRow, IonCol, IonRippleEffect, IonButton } from '@ionic/vue';
-import { ref } from 'vue';
+import productCategoryData from "@/assets/data/product-category.json";
+import {
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonRippleEffect,
+  IonButton,
+} from "@ionic/vue";
+import { ref } from "vue";
 interface Categories {
-  id: number,
-  name: string,
-  link: string,
+  id: number;
+  name: string;
+  link: string;
 }
 
 const categories = ref<Array<Categories>>([]);
@@ -37,29 +43,27 @@ const getCategories = async () => {
   try {
     const data = await new Promise<Array<Categories>>((resolve, reject) => {
       setTimeout(() => {
-        resolve(productCategoryData)
-      })
-    })
+        resolve(productCategoryData);
+      });
+    });
 
-    if(data) {
+    if (data) {
       categories.value = data;
     }
-
   } catch (err) {
-    if(err instanceof Error) {
+    if (err instanceof Error) {
       console.log(err.message);
     }
   }
-}
+};
 
 getCategories();
 </script>
 
 <style scoped>
-
 ion-grid {
   display: flex;
-  gap: 1em;
+  gap: 0.5em;
   overflow-x: scroll;
   --padding-start: 0 !important;
   --padding-end: 0 !important;
@@ -80,7 +84,7 @@ ion-button {
 }
 
 ion-ripple-effect {
-  border-radius: var(--ion-border-radius-md)
+  border-radius: var(--ion-border-radius-md);
 }
 
 .link {
@@ -97,5 +101,4 @@ ion-ripple-effect {
   background-color: var(--ion-color-primary);
   color: var(--ion-color-primary-contrast);
 }
-
 </style>

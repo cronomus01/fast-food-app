@@ -10,17 +10,19 @@
             ></ion-img>
           </ion-item>
           <ion-item color="light" lines="none">
-            <div>
-              <h4>{{ myOrder.product.item!.name }}</h4>
+            <ion-label>
+              <h2 class="ion-margin-bottom">
+                {{ myOrder.product.item!.name }}
+              </h2>
               <p v-for="addOn in myOrder.addOns" class="add-on-selected">
                 <span v-if="addOn.selected"
                   >{{ addOn.quantity }}x {{ addOn.title }}</span
                 >
-                <span class="add-on-price ion-margin-start"
+                <span class="add-on-price" v-if="addOn.selected"
                   >P {{ addOn.price * addOn.quantity }}</span
                 >
               </p>
-            </div>
+            </ion-label>
           </ion-item>
         </ion-list>
       </ion-col>
@@ -30,12 +32,11 @@
         <h4 color="primary">
           P {{ myOrder.product.price! * myOrder.product.quantity! }}
         </h4>
-        <ion-buttons>
+        <ion-buttons mode="md">
           <ion-button
             color="medium"
             fill="solid"
-            class="ion-margin-right"
-            @click="order.addProductQuantity"
+            @click="order.addProductQuantity()"
           >
             +
           </ion-button>
@@ -43,8 +44,7 @@
           <ion-button
             color="medium"
             fill="solid"
-            class="ion-margin-left"
-            @click="order.removeProductQuantity"
+            @click="order.removeProductQuantity()"
           >
             -
           </ion-button>
@@ -91,6 +91,15 @@ ion-grid.orders ion-list.order-quantity {
 
 ion-grid.orders ion-list.order-quantity p {
   margin: 0;
+}
+
+ion-grid.orders ion-list.order-quantity h2 {
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 0;
+  margin-bottom: 0.5em;
+  font-weight: bold;
+  font-size: larger;
 }
 
 ion-grid.orders .add-on-price {

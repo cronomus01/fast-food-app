@@ -1,7 +1,7 @@
 <template>
   <ion-grid class="ion-margin-top">
     <ion-row>
-      <ion-col>
+      <ion-col class="ion-text-center">
         <img :src="productItem.image" :alt="productItem.name" />
       </ion-col>
     </ion-row>
@@ -29,9 +29,9 @@
               >
                 +
               </ion-button>
-              <ion-button fill="clear">
+              <ion-label fill="clear">
                 {{ order.getProduct().quantity }}
-              </ion-button>
+              </ion-label>
               <ion-button
                 fill="solid"
                 color="light"
@@ -378,6 +378,7 @@ ion-card {
   margin-bottom: 0 !important;
   justify-content: space-between;
   margin-top: 0 !important;
+  width: 100%;
 }
 
 ion-card ion-card-title {
@@ -413,6 +414,7 @@ ion-card .ion-font-bold {
   display: flex;
   flex-direction: column;
   gap: 1em !important;
+  justify-content: center;
 }
 
 .add-on ion-col {
@@ -420,6 +422,10 @@ ion-card .ion-font-bold {
   align-items: center;
   flex-direction: column;
   padding: 0 !important;
+}
+
+.add-on ion-img {
+  width: 30%;
 }
 
 ion-img {

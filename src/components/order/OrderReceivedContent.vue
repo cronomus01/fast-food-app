@@ -83,5 +83,6 @@ ion-grid.order-received-nav ion-button {
   width: 100%;
   --padding-top: 1.5em !important;
   --padding-bottom: 1.5em !important;
+  --border-radius: var(--ion-border-radius-md);
 }
 </style>
