@@ -9,21 +9,19 @@
               src="assets/most-popular/steak-frieds-veggies.png"
             ></ion-img>
           </ion-item>
-          <ion-item color="light" lines="none">
-            <ion-label>
-              <h2 class="ion-margin-bottom">
-                {{ myOrder.product.item!.name }}
-              </h2>
-              <p v-for="addOn in myOrder.addOns" class="add-on-selected">
-                <span v-if="addOn.selected"
-                  >{{ addOn.quantity }}x {{ addOn.title }}</span
-                >
-                <span class="add-on-price" v-if="addOn.selected"
-                  >P {{ addOn.price * addOn.quantity }}</span
-                >
-              </p>
-            </ion-label>
-          </ion-item>
+          <ion-label>
+            <h2 class="ion-margin-bottom">
+              {{ myOrder.product.item!.name }}
+            </h2>
+            <p v-for="addOn in myOrder.addOns" class="add-on-selected">
+              <span v-if="addOn.selected"
+                >{{ addOn.quantity }}x {{ addOn.title }}</span
+              >
+              <span class="add-on-price" v-if="addOn.selected"
+                >P {{ addOn.price * addOn.quantity }}</span
+              >
+            </p>
+          </ion-label>
         </ion-list>
       </ion-col>
     </ion-row>
@@ -109,6 +107,7 @@ ion-grid.orders .add-on-price {
 ion-grid.orders .add-on-selected {
   display: flex;
   justify-content: space-between;
+  gap: 1em;
 }
 
 ion-col.order-summary-orders {
